@@ -3,7 +3,8 @@ testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
-  args_bin = []
+  # ここにパラメータを指定
+  args_bin = ["list", "-h"]
   bin = "tmp\\tomo-wallet.exe list -h"
   cmd = "go build -o ./tmp/tomo-wallet.exe ."
   delay = 1000
@@ -12,7 +13,7 @@ tmp_dir = "tmp"
   exclude_regex = ["_test.go"]
   exclude_unchanged = false
   follow_symlink = false
-  full_bin = "tmp\\tomo-wallet.exe list -h"
+  full_bin = ""
   include_dir = []
   include_ext = ["go", "tpl", "tmpl", "html"]
   include_file = []
