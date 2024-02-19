@@ -20,8 +20,9 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "ボクのお財布の履歴を表示します。",
 	Long:  `お財布の履歴表示`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("list called")
+	RunE: func(cmd *cobra.Command, args []string) error {
+		fmt.Println("list success!!")
+		return nil
 	},
 }
 

@@ -1,0 +1,41 @@
+# 実は2021年から compose.yml を探してから、 docker-compose.ymlを探すらしい
+
+# Docker Compose documentの最新版はv3.8
+version: "3.8"
+services:
+  backend:
+    build: ./
+    restart: always
+    expose: 
+      - 3000
+    ports:
+      - 3000:3000
+    # Important to bind/mount your codebase dir to /app dir for live reload
+    volumes:
+      - ./:/app
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - 5555:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    tty: true
+    restart: always
+    user: root
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - /etc/localtime:/etc/localtime:ro
+  pgweb:
+    image: sosedoff/pgweb
+    container_name: pgweb
+    ports: 
+      - "8081:8081"
+    environment:
+      - DATABASE_URL=postgres://root:password@postgres:5432/testdb?sslmode=disable
+    links: 
+      - postgres:postgres
+    restart: always
+    depends_on:
+      - postgres
