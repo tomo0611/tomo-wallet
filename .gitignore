@@ -6,3 +6,6 @@
 
 # config files (but include config.yml.sample for sample)
 config.yml
+
+# executable files
+tomo-wallet*
