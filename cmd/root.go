@@ -10,12 +10,25 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// アプリケーションのバージョンとリビジョン情報
+var (
+	Version  string
+	Revision string
+)
+
+var (
+	wallet string
+	// configFile 設定ファイルyamlのパス
+	configFile string
+	// c 設定
+	// c Config
+)
+
 // rootCmdはサブコマンドなしでじっこうしたときに呼ばれるコマンドです。
 var rootCmd = &cobra.Command{
 	Use:   "tomo-wallet",
 	Short: "ボクのお財布の履歴を管理するためのCLIツールです。",
 	Long:  `ボクのお財布の履歴を管理するためのCLIツールです。`,
-	// 実行時に何か処理をさせたければこれをコメントアウト
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
 
@@ -33,9 +46,7 @@ func init() {
 	// Cobraは、ここで定義されるとアプリケーション内でグローバルになる
 	// 永続フラグを使うことができる。
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.tomo-wallet.yaml)")
-
-	// Cobraはこのアクションが呼び出された時にだけ実行される
-	// ローカルフラグも使うことができる。
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	// Pありは通常のフラグ名(例.--name)だけでなく、省略形のフラグ名(例.-n)も引数として指定する
+	rootCmd.PersistentFlags().StringVarP(&configFile, "config", "c", "", "config file")
+	rootCmd.PersistentFlags().StringVarP(&wallet, "wallet", "w", "", "wallet name")
 }
