@@ -1,0 +1,16 @@
+# 開発モード設定
+dev: true
+
+# データベース設定
+db:
+  host: postgres
+  port: 5432
+  username: user
+  password: password
+  database: history
+
+# 外部の認証設定
+externalAuth:
+  google:
+    clientId: clientId
+    clientSecret: clientSecret
