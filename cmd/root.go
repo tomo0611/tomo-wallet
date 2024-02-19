@@ -49,4 +49,6 @@ func init() {
 	// Pありは通常のフラグ名(例.--name)だけでなく、省略形のフラグ名(例.-n)も引数として指定する
 	rootCmd.PersistentFlags().StringVarP(&configFile, "config", "c", "", "config file")
 	rootCmd.PersistentFlags().StringVarP(&wallet, "wallet", "w", "", "wallet name")
+
+	rootCmd.MarkFlagRequired("config")
 }
