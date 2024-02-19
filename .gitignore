@@ -1,0 +1,8 @@
+# key files
+./keys
+
+# environment files (but include .env for sample)
+.env.*
+
+# config files (but include config.yml.sample for sample)
+config.yml
